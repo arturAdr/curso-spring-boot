@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -30,7 +31,7 @@ public class Client implements Serializable {
 	private String cpfOrCnpj;
 	private Integer customerType;
 	
-	@OneToMany(mappedBy = "client")
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
 	private List<Address> adresses = new ArrayList<>();
 
 	@ElementCollection
@@ -51,7 +52,7 @@ public class Client implements Serializable {
 		this.name = name;
 		this.email = email;
 		this.cpfOrCnpj = cpfOrCnpj;
-		this.customerType = customerType.getCod();
+		this.customerType = (customerType == null) ? null : customerType.getCod();
 	}
 
 	public Integer getId() {

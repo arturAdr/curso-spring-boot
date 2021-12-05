@@ -34,7 +34,7 @@ public abstract class Payment {
 	public Payment(Integer id, OrderStatus orderStatus, Order order) {
 		super();
 		this.id = id;
-		this.orderStatus = orderStatus.getCod();
+		this.orderStatus = (orderStatus) == null ? null : orderStatus.getCod();
 		this.order = order;
 	}
 
